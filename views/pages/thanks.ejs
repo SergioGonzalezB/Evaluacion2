@@ -1,0 +1,25 @@
+<% contentFor('body') %>
+
+<div class="jumbotron text-center text-light bg-dark">
+  <h1 class="display-3">Tu CURP</h1>
+  <p class="lead"><strong>CURP resultante: </strong> <%- calculado %></p>
+  <hr />
+  <p>Un gusto ayudarte <a href="/about">Acerca de mi</a></p>
+  <p class="lead">
+    <a class="btn btn-primary btn-sm text-light" href="/" role="button"
+      >Regresar a Inicio</a
+    >
+  </p>
+</div>
+
+<div class="embed-responsive" style="padding-bottom: 80%;">
+  <object
+    data="/pdf/curp.pdf"
+    type="application/pdf"
+    width="100%"
+    height="100%"
+  ></object>
+</div>
+
+<!-- checar pagina de curp en pdf para crear la plantilla con las variables completas
+modificar embed div para que se vea menos grande -->

@@ -1,0 +1,54 @@
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  background-color: black;
+}
+
+main {
+  min-height: 500px;
+  padding: 50px 0;
+}
+
+
+.banner{
+    width: 30%;
+}
+
+input:invalid{
+  border-color: #900;
+  background-color: #FDD;
+}
+
+.fa {
+  font-size: 25px;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.icons img{
+  width: 10%;
+}
+
+.icons img:hover{
+  opacity: 0.7;
+}
