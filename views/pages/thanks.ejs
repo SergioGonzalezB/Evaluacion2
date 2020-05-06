@@ -1,15 +1,21 @@
 <% contentFor('body') %>
 
-<div class="jumbotron text-center text-light bg-dark">
+<div class="jumbotron text-center text-dark bg-light">
   <h1 class="display-3">Tu CURP</h1>
   <p class="lead"><strong>CURP resultante: </strong> <%- calculado %></p>
   <hr />
 
-<a class="btn btn-secondary btn-sm text-light" href="/pdfCURP.pdf" target="_blank" role="button">Mostrar PDF</a>
+  <a
+    class="btn btn-secondary btn-sm text-dark"
+    href="/CURP.pdf"
+    target="_blank"
+    role="button"
+    >Mostrar PDF</a
+  >
 
   <p>Un gusto ayudarte <a href="/contactanos">Contacto</a></p>
   <p class="lead">
-    <a class="btn btn-primary btn-sm text-light" href="/" role="button"
+    <a class="btn btn-primary btn-sm text-dark" href="/" role="button"
       >Regresar a Inicio</a
     >
   </p>

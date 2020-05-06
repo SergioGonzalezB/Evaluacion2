@@ -1,6 +1,51 @@
-<div class="container-fluid pt-5 pl-5 pb-2 text-light">
+<% contentFor('body') %>
+
+<div class="container-fluid pt-5 pl-5 pb-2 text-dark">
   <h1 class="pb-4">¿Como se construye el CURP?</h1>
+</div>
 
-
-  
+<div class="text-dark pl-5">
+  <h2>
+    <span>Elementos de la CURP</span>
+  </h2>
+  <p>Los elementos que componen la CURP son los siguientes:</p>
+  <ul>
+    <li>Primera letra y la primera vocal del primer apellido.</li>
+    <li>
+      Primera letra del segundo.
+    </li>
+    <li>
+      Primera letra del nombre de pila: se tomará en cuenta el primer nombre.
+      ("exceptuando los nombres compuestos cuando estos se antepongan los nombre de MARÍA y JOSÉ")
+    <br>
+    Ejemplo: Juan Francisco se tomaría la letra J.
+    <br>
+    Ejemplo 2: Si se llama José Eduardo tomará E
+  </p>
+  </li>
+    <li>
+      Fecha de nacimiento sin espacios en orden de año, mes y día. Ejemplo:
+      960917 (1996, septiembre 17).
+    </li>
+    <li>Letra del sexo (H o M).</li>
+    <li>
+      Dos letras correspondientes a la entidad de nacimiento (en caso de haber
+      nacido fuera del país, se marca como NE, "Nacido en el Extranjero"; véase
+      el Catálogo de Claves de Entidades Federativas.
+    </li>
+    <li>Primera consonante interna () del primer apellido.</li>
+    <li>Primera consonante interna () del segundo apellido.</li>
+    <li>Primera consonante interna () del nombre.</li>
+    <li>
+      Dígito del 0-9 para fechas de nacimiento hasta el año 1999 y A-Z para
+      fechas de nacimiento a partir del 2000.
+    </li>
+    <li>Dígito, para evitar duplicaciones.</li>
+  </ul>
+  <p>
+    Por ejemplo, si una persona se llamara Luis Raúl Bello Mena, con sexo
+    masculino, y hubiera nacido
+    el 13 de marzo de
+   1992 en el Estado de México, su CURP podría ser BEML920313HMCLNS09.
+  </p>
 </div>

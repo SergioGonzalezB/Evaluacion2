@@ -9,42 +9,34 @@
     
         <link rel="stylesheet" href="/css/bootstrap.min.css" />
         <link rel="stylesheet" href="/stylesheets/styles.css">
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
         <script src="/js/boostrap.bundle.js"></script>
     </head>
 
     <body>
+      <nav class="navbar navbar-expand-lg py-3 navbar-inverse shadow-sm">
+        <div class="container">
+          <a href="/" class="navbar-brand">
+            <!-- Logo Image -->
+            <img src="/images/logoblanco.png" width="120" alt="Inicio" class="d-inline-block align-middle mr-2">
+            <!-- Logo Text -->
+            <span class="text-uppercase font-weight-bold">CURP</span>
+          </a>
 
-      <nav class="navbar navbar-expand-lg navbar-dark text-light bg-dark">
-        <a class="navbar-brand" href="/home">CURP</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#barraNav"
-          aria-controls="barraNav"
-          aria-expanded="true"
-          aria-label="Activa navegacion"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-  
-        <div class="navbar-collapse collapse show" id="barraNav">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="/home">Inicio </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/conoce">Conoce tu CURP</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/registro">Obten tu CURP</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/contactanos">Contactanos</a>
-            </li>
-          </ul>
+          <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
+
+          <div id="navbarSupportedContent" class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item"><a class="nav-link" href="/">Inicio</a></li>
+              <li class="nav-item"><a class="nav-link" href="/conoce">Conoce tu CURP</a></li>
+              <li class="nav-item"><a class="nav-link" href="/registro">Obten tu CURP</a></li>
+              <li class="nav-item"><a class="nav-link" href="/contactanos">Contactanos</a></li>
+            </ul>
+          </div>
         </div>
       </nav>
+      
+
 
     <main>
       <%- body %>
@@ -58,7 +50,7 @@
 
     <div class="row">
       <div class="col-md-4">
-        <h3 class="font-weight-bold mb-0 text-light">Practica RFC</h3>
+        <h3 class="font-weight-bold mb-0 text-light">Evaluacion 2 CURP</h3>
       </div>
       <div class="col-md-4">
         <ul class="list-unstyled d-flex justify-content-center mb-0 mt-2">

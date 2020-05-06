@@ -113,7 +113,7 @@ router.post("/registro", (req, res) => {
 
   //Crea el archivo utilizando la variable que contiene nuestro contenido HTML
   //./nombreDeArchivo.pdf para determinar el nombre del archivo creado en ./ (raiz del proyecto)
-  pdf.create(content).toFile("./public/pdf/CURP.pdf", function (err, res) {
+  pdf.create(content).toFile("./public/CURP.pdf", function (err, res) {
     if (err) {
       //si existe un error lo tomamos y lo mandamos a consola
       console.log(err);
