@@ -26,7 +26,7 @@ var tools = require("./curp");
 
 //Ruta para home
 router.get("/", (req, res) => {
-  res.render("pages/home", { title: "Practica RFC" });
+  res.render("pages/home", { title: "Practica CURP" });
 });
 
 //Ruta para contactanos
@@ -49,6 +49,17 @@ router.get("/registro", (req, res) => {
   res.render("pages/registro", { title: "Registro" });
 });
 
+//Leer el archivo HTML con su charset
+var html = fs.readFileSync("./pdf.html", "utf8");
+//path para obtener la direccion absoluta de la carpeta Plantillas donde esta nuestro CSS y HTML
+var path = require("path");
+//Opciones para el documento PDF que se creara
+var options = {
+  //Format determina el tamaño de pagina para el PDF
+  format: "Tabloid",
+  //path.resolve se concatena al prefijo file:// que necesita llevar la propiedad base (donde residen los archivos css, imagenes y js)
+  base: "file://" + path.resolve("./public")
+};
 //Metodo utilizado por la forma que sera llamado al activar el boton submit, capturando los datos de los input
 router.post("/registro", (req, res) => {
   //Guarda la fecha de nacimiento para usarla como arreglo
@@ -79,38 +90,14 @@ router.post("/registro", (req, res) => {
     fecha_nacimiento,
   });
 
-  const content =
-    `<!DOCTYPE html>
-      <html>
-      <head>
-      <meta charset="utf-8" />
-      <title>Resultado de plantilla PDF</title>
-      <style>
-        h1 {
-          color: green;
-        }
-      </style>
-      </head>
-      <body>
-      <div
-        id="pageHeader"
-        style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
-        <p>- Ejemplo de cabecera en HTML PDF</p>
-      </div>
-      <div id="pageFooter" style="border-top: 1px solid #ddd; padding-top: 5px;">
-        Footer de Ejemplo ` +
-    calculado +
-    `
-      </div>
-      <h1>Título en el PDF creado con el paquete html-pdf</h1>
-      <p>Generando un PDF con un HTML sencillo</p>
-      </body>
-      </html>`;
+
   //Recibir el RFC calculado
   console.log("CURP calculado:" + calculado);
   //Para verificar que se concateno la fecha bien para la funcion
   console.log(fecha_nacimiento);
 
+
+  
   //Crea el archivo utilizando la variable que contiene nuestro contenido HTML
   //./nombreDeArchivo.pdf para determinar el nombre del archivo creado en ./ (raiz del proyecto)
   pdf.create(content).toFile("./public/CURP.pdf", function (err, res) {
