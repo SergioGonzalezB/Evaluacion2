@@ -3,23 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <title>Constancia CURP</title>
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="./bootstrap.min.css" />
-
-    <style>
-      .cuadro {
-        background-image: url("./fondoEUM.png");
-      }
-      h1 {
-        font-size: 500%;
-        font-weight: bolder;
-      }
-
-      h2 {
-        font-size: 300%;
-        font-weight: bold;
-      }
-    </style>
+    <link rel="stylesheet" href="http://localhost:3000/stylesheets/styles.css" />
+    <link rel="stylesheet" href="http://localhost:3000/stylesheets/bootstrap.min.css" />
   </head>
   <body>
     <div class="p-5 cuadro">
@@ -33,7 +18,7 @@
 
       <div class="p-5">
         <h3>
-          Clave: + calculado
+          Clave: <%- calculado %>
         </h3>
         <br class="espacio" />
       </div>
@@ -50,14 +35,14 @@
               Lugar de nacimiento: <%- estado %>
             </h4>
             <br class="espacio" />
-            <img src="./codigoQR.png" />
+            <img src="http://localhost:3000/images/codigoQR.png" />
           </div>
           <div class="col">
-            <img src="./bandera.png" />
+            <img src="http://localhost:3000/images/bandera.png" />
           </div>
         </div>
-        <div class="pt-5">
-          asdasdasd
+        <div class="pt-5 text-right">
+          Derechos Reservados (c)
         </div>
       </div>
     </div>

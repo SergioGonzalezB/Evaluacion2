@@ -2,27 +2,12 @@
 var express = require("express");
 var router = express.Router();
 var generaCurp = require("./curp");
-
-var pdf = require("html-pdf");
-var fs = require("fs");
-
-//Leer el archivo HTML con su charset
-var html = fs.readFileSync("./public/pdf/PlantillaCurp.html", "utf8");
-//path para obtener la direccion absoluta de la carpeta Plantillas donde esta nuestro CSS y HTML
-var path = require("path");
-//Opciones para el documento PDF que se creara
-var options = {
-  //Format determina el tamaño de pagina para el PDF
-  format: "Tabloid",
-  //path.resolve se concatena al prefijo file:// que necesita llevar la propiedad base (donde residen los archivos css, imagenes y js)
-  base: "file://" + path.resolve("./pdf"),
-};
-
 //Exportacion de metodos utilizados en routes.js para guardar gets y posts
 module.exports = router;
 
-//Se llama al archivo rfc.js para poder utilizar las funciones que calculen el rfc
-var tools = require("./curp");
+var pdf = require("html-pdf");
+var fs = require("fs");
+var ejs = require("ejs");
 
 //Ruta para home
 router.get("/", (req, res) => {
@@ -49,17 +34,6 @@ router.get("/registro", (req, res) => {
   res.render("pages/registro", { title: "Registro" });
 });
 
-//Leer el archivo HTML con su charset
-var html = fs.readFileSync("./pdf.html", "utf8");
-//path para obtener la direccion absoluta de la carpeta Plantillas donde esta nuestro CSS y HTML
-var path = require("path");
-//Opciones para el documento PDF que se creara
-var options = {
-  //Format determina el tamaño de pagina para el PDF
-  format: "Tabloid",
-  //path.resolve se concatena al prefijo file:// que necesita llevar la propiedad base (donde residen los archivos css, imagenes y js)
-  base: "file://" + path.resolve("./public")
-};
 //Metodo utilizado por la forma que sera llamado al activar el boton submit, capturando los datos de los input
 router.post("/registro", (req, res) => {
   //Guarda la fecha de nacimiento para usarla como arreglo
@@ -90,24 +64,28 @@ router.post("/registro", (req, res) => {
     fecha_nacimiento,
   });
 
-
   //Recibir el RFC calculado
   console.log("CURP calculado:" + calculado);
   //Para verificar que se concateno la fecha bien para la funcion
   console.log(fecha_nacimiento);
 
+  var compiled = ejs.compile(
+    fs.readFileSync(__dirname + "\\Plantilla\\PlantillaCurp.html", "utf8")
+  );
 
-  
-  //Crea el archivo utilizando la variable que contiene nuestro contenido HTML
-  //./nombreDeArchivo.pdf para determinar el nombre del archivo creado en ./ (raiz del proyecto)
-  pdf.create(content).toFile("./public/CURP.pdf", function (err, res) {
-    if (err) {
-      //si existe un error lo tomamos y lo mandamos a consola
-      console.log(err);
-    } else {
-      //si no hay error mandamos el RESPONSE a consola
-      console.log(res);
-    }
+  var html = compiled({
+    title: "Tu CURP",
+    calculado,
+    nombre,
+    apellido_paterno,
+    apellido_materno,
+    estado,
+    fecha_nacimiento,
   });
+
+  pdf.create(html).toFile("./public/curp.pdf", () => {
+    console.log("pdf done");
+  });
+
   res.render("pages/thanks", { title: "Gracias", calculado });
 });
